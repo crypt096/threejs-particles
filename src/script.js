@@ -20,7 +20,7 @@ const scene = new THREE.Scene();
 const geometry = new THREE.TorusGeometry(0.7, 0.2, 16, 100);
 
 const particlesGeometry = new THREE.BufferGeometry();
-const particlesCnt = 5000;
+const particlesCnt = 50000;
 
 const posArray = new Float32Array(particlesCnt * 3);
 
@@ -36,11 +36,11 @@ particlesGeometry.setAttribute(
 // Materials
 
 const material = new THREE.PointsMaterial({
-  size: 0.005,
+  size: 0.0005,
 });
 
 const particlesMaterial = new THREE.PointsMaterial({
-  size: 0.005,
+  size: 0.0005,
   map: texture,
   transparent: true,
 });
