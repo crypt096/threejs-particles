@@ -3,6 +3,10 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import * as dat from "dat.gui";
 
+// Texture loader
+const loader = new THREE.TextureLoader();
+const texture = loader.load("./texture.png");
+
 // Debug
 const gui = new dat.GUI();
 
@@ -32,12 +36,18 @@ particlesGeometry.setAttribute(
 // Materials
 
 const material = new THREE.PointsMaterial({
-  size: 0.0005,
+  size: 0.005,
+});
+
+const particlesMaterial = new THREE.PointsMaterial({
+  size: 0.005,
+  map: texture,
+  transparent: true,
 });
 
 // Mesh
 const sphere = new THREE.Points(geometry, material);
-const particlesMesh = new THREE.Points(particlesGeometry, material);
+const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
 scene.add(sphere, particlesMesh);
 
 // Lights
